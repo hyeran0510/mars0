@@ -13,19 +13,21 @@ def home():
 
 
 @app.route("/mars", methods=["POST"])
-def web_mars_post():
+def mars_post():
     name_receive = request.form['name_give']
-    address_receive = request.form['name_address']
+    address_receive = request.form['address_give']
     size_receive = request.form['size_give']
+
     doc = {
-        'name':name_receive,
-        'address':address_receive,
-        'size':size_receive
+        'name': name_receive,
+        'address': address_receive,
+        'size': size_receive
     }
-    db.mars.insert_one(doc)
 
+    db.orders.insert_one(doc)
 
-    return jsonify({'msg': '연결해서 주문완료'})
+    return jsonify({'msg': '주문 완료 망고디비에 연결확인하기!'})
+
 
 
 @app.route("/mars", methods=["GET"])
