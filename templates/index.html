@@ -67,8 +67,15 @@
                               let name = rows[i]['name']
                               let address = rows[i]['address']
                               let size = rows[i]['size']
-                      }
 
+                               let temp_html = `<tr>
+                                                    <td>${name}</td>
+                                                    <td>${address}</td>
+                                                    <td>${size}</td>
+                                                  </tr>`
+                                                $('#order-box').append(temp_html)
+
+                              }
                 }
             });
         }
@@ -130,22 +137,8 @@
       <th scope="col">평수</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <td>홍길동</td>
-      <td>서울시 용산구</td>
-      <td>20평</td>
-    </tr>
-    <tr>
-      <td>임꺽정</td>
-      <td>부산시 동구</td>
-      <td>10평</td>
-    </tr>
-    <tr>
-      <td>세종대왕</td>
-      <td>세종시 대왕구</td>
-      <td>30평</td>
-    </tr>
+    <tbody id="order-box">
+
     </tbody>
   </table>
 </div>

@@ -32,8 +32,10 @@ def mars_post():
 
 @app.route("/mars", methods=["GET"])
 def web_mars_get():
-    order_list = list(db.mars.find({}, {'_id': False}))
+    order_list = list(db.orders.find({}, {'_id': False}))
     return jsonify({'orders': order_list})
+
+
 
 
 if __name__ == '__main__':
