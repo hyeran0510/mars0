@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
+
 client = MongoClient('mongodb+srv://test:sparta@cluster0.up4jczu.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
@@ -26,13 +27,13 @@ def mars_post():
 
     db.orders.insert_one(doc)
 
-    return jsonify({'msg': '주문 완료 망고디비에 연결확인하기!'})
-
+    return jsonify({'msg': '주문 완료 몽고디비에 연결확인하기!'})
 
 
 @app.route("/mars", methods=["GET"])
 def web_mars_get():
-    return jsonify({'msg': 'GET 연결 완료!'})
+    order_list = list(db.mars.find({}, {'_id': False}))
+    return jsonify({'orders': order_list})
 
 
 if __name__ == '__main__':

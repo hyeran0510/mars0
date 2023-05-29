@@ -62,7 +62,13 @@
                 url: '/mars',
                 data: {},
                 success: function (response) {
-                    alert(response['msg'])
+                         let rows = response['orders']
+                          for (let i = 0; i < rows.length; i++) {
+                              let name = rows[i]['name']
+                              let address = rows[i]['address']
+                              let size = rows[i]['size']
+                      }
+
                 }
             });
         }
